@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>{$GLOBALS["CONFIG"]["basic"]["APP_NAME"]} | Admin</title>
+    <script src="/res/js/waves.min.js"></script>
+    <link rel="stylesheet" href="/res/css/waves.min.css">
+    <link rel="stylesheet" href="/res/css/panx-design.css">
+    <script src="/res/js/panx-design.js"></script>
+</head>
+<body>
+    <div class="layout-wrapper">
+        <div class="layout-inner">
+            <div class="layout-navbar navbar navbar-fixed">
+                <div class="navbar-title">
+                    <div class="navbar-logo">
+                        <img src="https://alexkratky.com/res/img/logo.svg" alt="PD">
+                    </div>
+                    <div class="navbar-text">
+                        {$GLOBALS["CONFIG"]["basic"]["APP_NAME"]}
+                    </div>
+                </div>
+                <div class="navbar-items">
+                    <a n:link="view-roles" class="navbar-item {Route::getAlias() == 'view-roles' ? 'navbar-item-active' : ''}">
+                        Roles
+                    </a>
+                    <a n:link="view-permissions" class="navbar-item {Route::getAlias() == 'view-permissions' ? 'navbar-item-active' : ''}">
+                        Permissions
+                    </a>
+                    <a n:link="view-users" class="navbar-item  {Route::getAlias() == 'view-users' ? 'navbar-item-active' : ''}">
+                        Users
+                    </a>
+                    <a n:link="logout" class="navbar-item">
+                        Logout
+                    </a>
+                </div>
+                <div class="navbar-mobile">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+            </div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>{Route::getTitle()} | NAUČ.MĚ</title>
+    <link rel="stylesheet" href="/res/css/panx-design.css">
+    <script src="/res/js/panx-design.js"></script>
+    <meta name="theme-color" content="#0055f4">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#0055f4">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0055f4">
+    <link rel="stylesheet" href="/res/css/panx.css">
+    <script src="/res/js/panx.js"></script>
+</head>
+<body>
+    <div class="layout-wrapper">
+        <div class="layout-inner">
+            <div class="layout-navbar navbar navbar-fixed">
+                <a n:link="list">
+                    <div class="navbar-title">
+                        <div class="navbar-text">
+                            NAUČ.MĚ
+                        </div>
+                    </div>
+                </a>
+                <div class="navbar-items">
+                    <a n:link="list">
+                        <div class="navbar-item">
+                            Procházení
+                        </div>
+                    </a>
+                    {if $GLOBALS["auth"]->isLogined()}
+                        <a n:link="canditates">
+                            <div class="navbar-item">
+                                Přehled zájemců
+                            </div>
+                        </a>
+
+                        <a n:link="edit">
+                            <div class="navbar-item">
+                                Edit
+                            </div>
+                        </a>
+
+                        <a n:link="logout">
+                            <div class="navbar-item">
+                                Logout
+                            </div>
+                        </a>
+                    {else}
+                        <a n:link="login">
+                            <div class="navbar-item">
+                                Login
+                            </div>
+                        </a>
+                    {/if}
+                </div>
+                <div class="navbar-mobile">
+                    <i class="icon ion-md-menu"></i>
+                </div>
+            </div>
+            <div class="layout-container">
+                
+                <div class="layout-content">

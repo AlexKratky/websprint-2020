@@ -1,0 +1,50 @@
+{include '_header_pd.latte'}
+<div class="layout-container">
+    <div class="layout-content">
+        <div class="row" style="max-width: 1000px; margin: auto auto;">
+            <table>
+                <tr>
+                    <th>NAME OF ROLE</th>
+                    <th>VALUE</th>
+                    <th>LANDING PAGE</th>
+                    <th></th>
+                </tr>
+                {foreach $roles as $role}
+                <tr>
+                    <td>
+                        {$role["NAME_OF_ROLE"]}
+                    </td>
+                    <td>
+                        {$role["VALUE"]}
+                    </td>
+                    <td>
+                        {$role["LANDING_PAGE"]}
+                    </td>
+                    <td>
+                        {if $role["VALUE"] != 1 && $role["VALUE"] != 50}
+                            <a href="/_admin/view/delete/{$role["VALUE"]}">x</a>
+                        {/if}
+                    </td>
+                </tr>
+                {/foreach}
+            </table>
+            <form method="POST" action="{Route::alias('view-roles-save')}">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" placeholder="Name of role" name="name" class="form-input" required>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" placeholder="Value" name="value" class="form-input" required>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" placeholder="Landing page" name="landing" class="form-input">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-outline-success" style="width: 100%;">Add role</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include '_footer_pd.latte'}

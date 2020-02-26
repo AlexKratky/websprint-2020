@@ -1,0 +1,47 @@
+{include '_header.latte'}
+                    <div class="row" style="max-width: 1400px; margin: auto auto; margin-top: 100px;">
+                        <h1>Přehled lektorů</h1>
+                        <div class="grid">
+                            {foreach $candidates as $candidate}
+                                <div>
+                                    <div class="card">
+                                        <div class="card-title">{$candidate["NAME"]}</div>
+                                        <div class="card-text">
+                                            {$candidate["MESSAGE"]}    
+                                        </div>
+                                        <div class="card-text">
+                                            {date("d.m.Y H:i:s", strtotime($candidate["CREATED_AT"]))}    
+                                        </div>
+                                        <div class="card-actions">
+                                            <a href="mailto:{$candidate['EMAIL']}"><button class="btn mobile-full-width btn-primary">Odpovědět</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                            
+                        </div>
+                        {if $candidates == false || count($candidates) == 0}
+                                <h1>Nemáté zatím žádné zájemce.</h1>
+                            {/if}
+                    </div>
+{include '_footer.latte'}
+<style>
+.profile-picture {
+    margin: auto auto;
+    text-align: center;
+}
+.profile-picture img {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+h3 {
+    text-align: center;
+}
+.info {
+    margin-top: 20px;   
+}
+.input-error {
+    display: none;
+}
+</style>

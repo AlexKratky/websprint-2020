@@ -1,0 +1,34 @@
+{include '_header_pd.latte'}
+<div class="layout-container">
+    <div class="layout-content">
+        <div class="row" style="max-width: 1000px; margin: auto auto;">
+            <table>
+                <tr>
+                    <th>PERMISSION NAME</th>
+                    <th></th>
+                </tr>
+                {foreach $permissions as $permission}
+                <tr>
+                    <td>
+                        {$permission["PERMISSION_NAME"]}
+                    </td>
+                    <td>
+                        <a href="/_admin/view/permissions/delete/{$permission["ID"]}">x</a>
+                    </td>
+                </tr>
+                {/foreach}
+            </table>
+            <form method="POST" action="{Route::alias('view-permissions-save')}">
+                <div class="row">
+                    <div class="col-6 col-s-6">
+                        <input type="text" placeholder="Permission name" name="permission" class="form-input" autofocus required>
+                    </div>
+                    <div class="col-6 col-s-6">
+                        <button class="btn btn-outline-success" style="width: 100%;">Add permission</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include '_footer_pd.latte'}

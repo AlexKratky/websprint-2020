@@ -1,0 +1,49 @@
+{include '_header.latte'}
+                    <div class="row" style="max-width: 1400px; margin: auto auto; margin-top: 100px;" id="extensions">
+                        {if $teacher["AVATAR"] != null && $teacher["AVATAR"] != ""}
+                            <div class="profile-picture">
+                                <img src="/res/img/avatars/{$teacher['AVATAR']}">
+                            </div>
+                        {/if}
+                        <h1>{$teacher["FIRSTNAME"]} {$teacher["LASTNAME"]}</h1>
+                        <h3>{$teacher["SKILL"]}</h3>
+                        <div class="info">
+                                {$teacher["DESCRIBE"]}
+                        </div>
+                        <br><br>
+                        <div style="text-align: center; grid-column-start: 1; grid-column-end: 3;">
+                            <a href="/list/detail/{Route::getValue('ID')}/contact"><button class="btn mobile-full-width btn-primary btn-rounded">Kontaktovat</button></a>
+                        </div>
+                        {if isset($_GET["sent"])}
+                            <div class="text-success">Kontakt byl odeslán.</div>
+                        {/if}
+                    </div>
+{include '_footer.latte'}
+<style>
+.profile-picture {
+    margin: auto auto;
+    text-align: center;
+}
+.profile-picture img {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+h3 {
+    text-align: center;
+}
+.info {
+    max-width: 800px;
+    margin: auto auto;
+    text-align: justify;   
+    margin-top: 20px;
+
+}
+
+.text-success {
+    color: var(--success);
+    font-size: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+</style>

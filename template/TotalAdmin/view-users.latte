@@ -1,0 +1,110 @@
+{include '_header_pd.latte'}
+<div class="layout-container">
+    <div class="layout-content">
+        <div class="row" style="max-width: 1000px; margin: auto auto;">
+            <div class="row">
+                <div class="col-12 col-s-12">
+                    <input type="text" placeholder="Search ..." name="search" class="form-input" autofocus id="search">
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mail</th>
+                    <th>Verified</th>
+                    <th>Role</th>
+                    <th>Permissions</th>
+                    <th>Created</th>
+                    <th>Edited</th>
+                </tr>
+                <tbody id="list">
+                {foreach $users as $user}
+                <tr onclick="window.location.href = '/_admin/view/users/edit/' + {$user[ID]}" style="cursor: pointer;">
+                    <td>
+                        {$user["ID"]}
+                    </td>
+                    <td>
+                        {$user["USERNAME"]}
+                    </td>
+                    <td>
+                        {$user["EMAIL"]}
+                    </td>
+                    <td>
+                        <div class="wrapper-checkbox">
+                            <input type="checkbox" {$user["VERIFIED"] == 1 ? "checked" : ""} disabled>
+                            <label></label>
+                        </div>
+                    </td>
+                    <td>
+                        {$user["ROLE"]}
+                    </td>
+                    <td>
+                        {str_replace("|", ", ", $user["PERMISSIONS"])}
+                    </td>
+                    <td>
+                        {$user["CREATED_AT"]}
+                        {*date("d.m.Y H:i:s", strtotime($user["CREATED_AT"]))*}
+                    </td>
+                    <td>
+                        {$user["EDITED_AT"]}
+                        {*date("d.m.Y H:i:s", strtotime($user["EDITED_AT"]))*}
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById("search").addEventListener("keyup", () => {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            //document.getElementById("demo").innerHTML = this.responseText;
+            document.getElementById("list").innerHTML = "";
+            let j = JSON.parse(this.responseText);
+            console.log(j);
+            for(let i = 0; i < j.length; i++) {
+                document.getElementById("list").insertAdjacentHTML("beforeend", 
+                `<tr onclick="window.location.href = '/_admin/view/users/edit/`+j[i].ID+`'"  style="cursor: pointer;">
+                <td>
+                    `+j[i].ID+`
+                </td>
+                <td>
+                    `+ j[i].USERNAME +`
+                </td>
+                <td>
+                    `+ j[i].EMAIL +`
+                </td>
+                <td>
+                    <div class="wrapper-checkbox">
+                            <input type="checkbox" `+ (j[i].VERIFIED == 1 ? "checked" : "")+` disabled>
+                            <label></label>
+                        </div>
+                </td>
+                <td>
+                    `+ j[i].ROLE +`
+                </td>
+                <td>
+                    `+ (j[i].PERMISSIONS == null ? "" : j[i].PERMISSIONS.replace(/\|/g, ", ")) +`
+                </td>
+                <td>
+                    `+ j[i].CREATED_AT +`
+                </td>
+                <td>
+                    `+ j[i].EDITED_AT +`
+                </td>
+                </tr>`)
+            }
+        }
+    };
+    xhttp.open("POST", {Route::alias('view-users-search')}, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("query="+ document.getElementById("search").value);
+});
+</script>
+{include '_footer_pd.latte'}

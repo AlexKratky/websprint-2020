@@ -1,0 +1,40 @@
+{include '_header.latte'}
+                    <div class="row" style="max-width: 1400px; margin: auto auto; margin-top: 100px;">
+                        <h1>Přehled lektorů</h1>
+                        <div class="grid">
+                            {foreach $teachers as $teacher}
+                                <div>
+                                    <div class="card">
+                                        <div class="card-title">{$teacher["FIRSTNAME"]} {$teacher["LASTNAME"]}</div>
+                                        <div class="card-text">
+                                            {$teacher["SKILL"]}    
+                                        </div>
+                                        <div class="card-actions">
+                                            <a href="/list/detail/{$teacher['ID']}/"><button class="btn mobile-full-width btn-primary">Přejít na detail</button></a>
+                                            <a href="/list/detail/{$teacher['ID']}/contact/"><button class="btn mobile-full-width btn-secondary">Kontaktovat</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                        </div>
+                    </div>
+
+
+{include '_footer.latte'}
+<style>
+.profile-picture {
+    margin: auto auto;
+    text-align: center;
+}
+.profile-picture img {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+h3 {
+    text-align: center;
+}
+.info {
+    margin-top: 20px;   
+}
+</style>

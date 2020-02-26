@@ -1,0 +1,74 @@
+<div class="row" style="margin-top: 100px;">
+                        <div class="col-12 np">
+                            <nav class="footer">
+                                <div class="row" style="max-width: 1000px; margin: auto auto;">
+                                    <div class="col-4 col-s-12">
+                                        <div>
+                                            <a href="#" class="footer-brand">NAUČ.MĚ</a>
+                                        </div>
+                                        <a class="footer-social" href="javascript:void(0)">
+                                            <i class="ion ion-logo-twitter"></i>
+                                        </a>
+                                        &nbsp; &nbsp;
+                                        <a class="footer-social" href="javascript:void(0)">
+                                            <i class="ion ion-logo-github"></i>
+                                        </a>
+                                        &nbsp; &nbsp;
+                                        <a class="footer-social" href="javascript:void(0)" title="link">
+                                            <i class="ion ion-md-link"></i>
+                                        </a>
+                                    </div>
+                    
+                                    <div class="col-8 np">
+                                        <div class="row">
+                                            <div class="col-6 col-s-6">
+                                                <div class="footer-text">Akce</div>
+                                                <a n:link="list" class="footer-link">Procházení</a>
+                                                {if $GLOBALS["auth"]->isLogined()}
+                                                    <a n:link="candidates" class="footer-link">Přehled zájemců</a>
+                                                {/if}
+                                            </div>
+                                            <div class="col-6 col-s-6">
+                                                <div class="footer-text">Uživatel</div>
+                                                {if $GLOBALS["auth"]->isLogined()}
+                                                    <a n:link="edit" class="footer-link">Edit</a>
+                                                    <a n:link="logout" class="footer-link">Logout</a>
+                                                {else}
+                                                    <a n:link="login" class="footer-link">Login</a>
+                                                    <a n:link="register" class="footer-link">Register</a>
+                                                {/if}
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-12 footer-copyright">
+                                        &copy; NAUČ.MĚ 2020.
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<link
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+
+
+<!--https://ionicons.com/-->
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+<style>
+
+a {
+    text-decoration: none !important;
+}
+.footer a:not(.footer-social) {
+    display: block;
+}
+</style>
