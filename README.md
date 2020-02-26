@@ -7,3 +7,6 @@ Kvůli nutné instalanci panx-frameworku a jeho poměrně složitějšímu nasta
 
 V případě, že by byla potřeba to rozjet lokálně, je nutné nainstalovat balíčky přes composer a vygenerovat config s připojením DB (kvůli bezpečnosti není config součástí).
 
+Obsahuje dvoufázové ověřování, google recaptchu při neplatném přihlášení atd.
+
+Odesílání na email není možné kvůli absenci postfixu na mailu, nicméně funkce mail() je obsažena.
